@@ -57,22 +57,31 @@ The datasets should have a directory structure as follows:
 ## Quick start
 ### Download the pretrained model
 The pretrained weights of our model can be downloaded from [here](https://drive.google.com/drive/folders/1k-7JW9krOgzDjzsEKDgS7bgvU1pX79nT?usp=sharing).
-The `diffusion.zip` file corrsponds to the entire MoMo framework. (The files `flow_teacher.zip` and `synthesis.zip` corresponds to the flow teacher model and the synthesis network, respectively.)
 
-Download the zip files and extract them each under `experiments` folder.
-It should then have a hierarchy like: `experiments/diffusion/momo_full/weights/model.pth`.
+Download `experiments/diffusion` which contain the full __MoMo__ model. (This would be enough if you want the full model only.)
+
+Extract and place the `experiments` directory right under this project.
+
+It should then have a hierarchy like: `MoMo/experiments/diffusion/momo_full/weights/model.pth`.
+
+In case you individually want the weights of flow teacher network or the synthesis network, download `experiments/flow_teacher` or `experiments/synthesis`.
+
 
 ### Running x2 interpolation of a video
 For x2 interpolation of a video, simply run the command below
+
 ```
 accelerate launch demo.py --video <path_to_video.mp4> --output_path <path_to_x2_video.mp4>
 ```
+
 Note: you can also use `python` command instead of `accelerate` for single GPU inference.
+
 ```
 python demo.py --video <path_to_video.mp4> --output_path <path_to_x2_video.mp4>
 ```
 
 ### Interpolation result
+Our interpolation result on Xiph can be found [here](https://drive.google.com/drive/folders/1G1FSKundv_7Mv-FUySWronnhieuwNExB?usp=share_link).
 Below is an example x2 interpolation result with our model:
 
 #### Input Video
@@ -88,11 +97,15 @@ Below is an example x2 interpolation result with our model:
 ## Training
 
 The training process of our framework consist of several steps.
+
 You can run the following script file for training, and details can be found in `train_all.sh`.
+
 You may want to configure the path to the root directory where datasets are placed.
+
 ```
 sh train_all.sh <path_to_dataroot>
 ```
+
 <div align="center">
   <img src=figures/overview.png width=700 />
 </div>
@@ -102,7 +115,13 @@ sh train_all.sh <path_to_dataroot>
 
 ### Test full model (MoMo)
 For evaluation on public benchmarks, run the command as below.
-You can optionally choose to visualize the estimated flows by `--visualize_flows`. You can save the results either as tensorboard logs by `--logging`, or as png by `--save_as_png`. When saving the results as png files, make sure to set the directory to save the results by `--png_save_dir`.
+
+You can optionally choose to visualize the estimated flows by `--visualize_flows`.
+
+You can save the results either as tensorboard logs by `--logging`, or as png by `--save_as_png`.
+
+When saving the results as png files, make sure to set the directory to save the results by `--png_save_dir`.
+
 ```
 # basic usage
 accelerate launch eval_momo.py --name momo_full --dataroot <path_to_dataroot> --valid_dataset <dataset_name>
@@ -116,6 +135,7 @@ accelerate launch eval_momo.py --name momo_full --dataroot <path_to_dataroot> --
 
 ### Test individual components (i.e., synthesis model, teacher flow model)
 The individual components can be tested with the command below.
+
 The weights of the synthesis model, and teacher flow model are also available [here](https://drive.google.com/drive/folders/1k-7JW9krOgzDjzsEKDgS7bgvU1pX79nT?usp=sharing).
 ```
 # synthesis model testing
