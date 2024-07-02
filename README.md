@@ -146,3 +146,11 @@ accelerate launch eval_components.py --name momo_teacher_Ls --dataroot <path_to_
 ```
 
 ## Citation
+```
+@article{lew2024disentangled,
+  title={Disentangled Motion Modeling for Video Frame Interpolation},
+  author={Lew, Jaihyun and Choi, Jooyoung and Shin, Chaehun and Jung, Dahuin and Yoon, Sungroh},
+  journal={arXiv preprint arXiv:2406.17256},
+  year={2024}
+}
+```
