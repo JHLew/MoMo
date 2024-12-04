@@ -58,11 +58,15 @@ The datasets should have a directory structure as follows:
 ### Download the pretrained model
 The pretrained weights of our model can be downloaded from [here](https://drive.google.com/drive/folders/1k-7JW9krOgzDjzsEKDgS7bgvU1pX79nT?usp=sharing).
 
-Download `experiments/diffusion` which contain the full __MoMo__ model. (This would be enough if you want the full model only.)
+Download `experiments/diffusion` which contain the full **MoMo** model. (This would be enough if you want the full model only.)
+
+**UPDATE (Dec 04, 2024)** we additionally provide the weights of a lighter version of our model, MoMo-10M in the link provided above.
 
 Extract and place the `experiments` directory right under this project.
 
 It should then have a hierarchy like: `MoMo/experiments/diffusion/momo_full/weights/model.pth`.
+
+For 10M model, it should be in a form like: `MoMo/experiments/diffusion/momo_10m/weights/model.pth`.
 
 In case you individually want the weights of flow teacher network or the synthesis network, download `experiments/flow_teacher` or `experiments/synthesis`.
 
@@ -132,6 +136,17 @@ accelerate launch eval_momo.py --name momo_full --dataroot <path_to_dataroot> --
 # example usage of testing on Xiph-2K data, visualize the estimated flow maps and save all results as png
 accelerate launch eval_momo.py --name momo_full --dataroot <path_to_dataroot> --valid_dataset Xiph_2K --visualize_flows --save_as_png --png_save_dir ./momo_png_results/Xiph_2K
 ```
+
+### Test a lighter version
+We also provide a lighter version of MoMo, with 10M parameters.
+
+The basic usage is similar to that of the original full model, and can be used as below, with a  slight change in the number of channel dimensions.
+
+```
+# basic usage of MoMo-10M
+accelerate launch eval_momo.py --name momo_10m --dims 96 160 --dataroot <path_to_dataroot> --valid_dataset <dataset_name>
+```
+
 
 ### Test individual components (i.e., synthesis model, teacher flow model)
 The individual components can be tested with the command below.
