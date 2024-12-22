@@ -15,7 +15,7 @@ pip install -r requirements.txt
 To configure specific GPUs to use in training / inference, use the `accelerate config` command before running the commands below.
 
 ### Datasets
-We use [Vimeo90k](http://toflow.csail.mit.edu/) for training, and use [SNU-FILM](https://myungsub.github.io/CAIN/), [Xiph](dataset.py#L168), [Middlebury-others](https://vision.middlebury.edu/flow/data/) for validation. Download the datasets and put them under a root directory of datasets (e.g., /dataset).
+We use [Vimeo90k](http://toflow.csail.mit.edu/) for training, and use [SNU-FILM](https://myungsub.github.io/CAIN/), [Xiph](dataset.py#L168), [Middlebury-others](https://vision.middlebury.edu/flow/data/) and [Vimeo90k](http://toflow.csail.mit.edu/) for validation. Download the datasets and put them under a root directory of datasets (e.g., /dataset).
 
 The datasets should have a directory structure as follows:
 ```
