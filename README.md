@@ -1,4 +1,4 @@
-# Disentangled Motion Modeling for Video Frame Interpolation
+# Disentangled Motion Modeling for Video Frame Interpolation, AAAI 2025
 <div align="center">
   <img src=figures/cover_figure.png width=900 />
 </div>
